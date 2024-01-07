@@ -1,0 +1,128 @@
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Use a Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+/* Body */
+body {
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    background-color: #fff;
+    color: #333;
+    position: relative;
+    padding: 1rem;
+    min-height: 100vh;
+}
+
+/* Night Mode Toggle Icon */
+#night-mode-toggle {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    cursor: pointer;
+    font-size: 1.5rem;
+}
+
+/* Header */
+header {
+    text-align: center;
+    padding-top: 2rem;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+header p {
+    min-width: 250px;
+    margin-bottom: 1rem;
+}
+
+header p a {
+    color: #333;
+    text-decoration: none;
+    margin: 0 0.5rem;
+    white-space: nowrap;
+}
+
+header p a:hover,
+header p a:focus {
+    text-decoration: underline;
+}
+
+/* Main Content Sections */
+.content-section {
+    text-align: center;
+    margin: 20px 0;
+}
+
+#about-text {
+    display: none;
+    margin: 0 auto;
+    max-width: 60%;
+    text-align: justify;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 1rem 0;
+    background-color: transparent;
+    color: inherit;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+/* Dark Mode */
+body.dark-mode {
+    background-color: #333;
+    color: #f4f4f4;
+}
+
+body.dark-mode #night-mode-toggle i {
+    color: #f4f4f4;
+}
+
+body.dark-mode header p a {
+    color: #f4f4f4;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2rem;
+    }
+
+    header p a {
+        font-size: 0.8rem;
+    }
+
+    #night-mode-toggle {
+        top: 0.5rem;
+        right: 0.5rem;
+        font-size: 1.2rem;
+    }
+
+    #about-text {
+        max-width: 90%;
+    }
+
+    #about-text {
+        display: none; /* Hidden by default, will be shown when the About link is clicked */
+        margin: 0 auto; /* Centers the text block */
+        max-width: 60%; /* Sets the maximum width to 60% of the parent element */
+        text-align: center; /* Centers the text within the div */
+    }
+    
+    #about-text p {
+        margin-bottom: 1rem; /* Adds space between paragraphs */
+    }
+    
+}
