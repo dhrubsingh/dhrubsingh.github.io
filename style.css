@@ -65,8 +65,12 @@ header p a:focus {
 #about-text {
     display: none;
     margin: 0 auto;
-    max-width: 60%;
-    text-align: justify;
+    max-width: 600px; /* This value may need to be adjusted to match your header's width */
+    text-align: center;
+}
+
+#about-text p {
+    margin-bottom: 1rem;
 }
 
 /* Footer */
@@ -113,16 +117,4 @@ body.dark-mode header p a {
     #about-text {
         max-width: 90%;
     }
-
-    #about-text {
-        display: none; /* Hidden by default, will be shown when the About link is clicked */
-        margin: 0 auto; /* Centers the text block */
-        max-width: 60%; /* Sets the maximum width to 60% of the parent element */
-        text-align: center; /* Centers the text within the div */
-    }
-    
-    #about-text p {
-        margin-bottom: 1rem; /* Adds space between paragraphs */
-    }
-    
 }
