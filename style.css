@@ -80,7 +80,7 @@ header p a:focus {
 #books-text {
     display: none;
     margin: 0 auto;
-    max-width: 600px; /* Adjust as needed */
+    max-width: 600px; 
     text-align: center;
 }
 
