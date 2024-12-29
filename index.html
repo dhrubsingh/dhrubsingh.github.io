@@ -4,53 +4,290 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dhrub Singh</title>
-    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <script src="script.js" defer></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #4a5568;
+            --text-color: #1f2937;
+            --bg-color: #ffffff;
+            --hover-color: #2d3748;
+            --secondary-bg: #f7fafc;
+            --link-color: #4a5568;
+            --link-hover-color: #2d3748;
+            --transition: all 0.3s ease;
+        }
+
+        body.dark-mode {
+            --text-color: #f3f4f6;
+            --bg-color: #111827;
+            --secondary-bg: #1f2937;
+            --link-color: #a0aec0;
+            --link-hover-color: #e2e8f0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: var(--transition);
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.025em;
+        }
+
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
+        }
+
+        .nav-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 0;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--primary-color);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .content-section {
+            background-color: var(--secondary-bg);
+            border-radius: 1.5rem;
+            padding: 3rem;
+            margin-bottom: 2rem;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: var(--transition);
+            max-width: 720px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.8;
+        }
+
+        .content-section.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .content-section p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            color: var(--text-color);
+        }
+
+        .content-section p:last-child {
+            margin-bottom: 0;
+        }
+
+        .content-section a {
+            color: var(--link-color);
+            text-decoration: none;
+            border-bottom: 1px solid var(--link-color);
+            transition: var(--transition);
+        }
+
+        .content-section a:hover {
+            color: var(--link-hover-color);
+            border-bottom-color: var(--link-hover-color);
+        }
+
+        .book-list {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .book-item {
+            padding: 1rem;
+            border-radius: 0.5rem;
+            background-color: var(--bg-color);
+            transition: var(--transition);
+        }
+
+        .book-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        #theme-toggle {
+            position: fixed;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            color: var(--text-color);
+            cursor: pointer;
+            padding: 0.5rem;
+            font-size: 1.25rem;
+            border-radius: 0.5rem;
+            transition: var(--transition);
+        }
+
+        #theme-toggle:hover {
+            background-color: var(--secondary-bg);
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: var(--text-color);
+            opacity: 0.8;
+        }
+
+        @media (max-width: 640px) {
+            .container {
+                padding: 1rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+            }
+
+            .content-section {
+                padding: 1.5rem;
+            }
+        }
+    </style>
 </head>
-<body class="light-mode">
-    <header>
-        <h1>Dhrub Singh</h1>
-        <p><a href="#" id="about-link">About</a> | <a href="#books">Books</a> | <a href="https://www.linkedin.com/in/dhrubhagatsingh/">LinkedIn</a> | <a href="https://github.com/dhrubsingh">GitHub</a> | <a href="https://drive.google.com/file/d/1HTGL1oSjwbkytILaNikrdynG1H05UCtt/view?usp=sharing">Resume</a></p>
-        <div id="night-mode-toggle" title="Toggle Night Mode"><i class="fas fa-moon"></i></div>
-    </header>
+<body>
+    <div class="container">
+        <header>
+            <h1>Dhrub Singh</h1>
+            <nav class="nav-links">
+                <a href="#about" class="nav-link">About</a>
+                <a href="#books" class="nav-link">Books</a>
+                <a href="https://www.linkedin.com/in/dhrubhagatsingh/" target="_blank">LinkedIn</a>
+                <a href="https://github.com/dhrubsingh" target="_blank">GitHub</a>
+                <a href="https://drive.google.com/file/d/1HTGL1oSjwbkytILaNikrdynG1H05UCtt/view?usp=sharing" target="_blank">Resume</a>
+            </nav>
+        </header>
 
-    <main>
-        <section id="about-section" class="content-section">
-            <div id="about-text" style="display: none;">
-                <p>I'm a current junior at Harvard College studying computer science. </p>
-                <p>In the past, I have worked for <a href = "https://www.redhat.com/en">Red Hat</a>, <a href = "https://www.gcash.com/">GCash</a>, and <a href = "https://www.novid.org/">NOVID</a>.</p>
-                <p>I have also been a teaching fellow for CS50 and CS32, Harvard's flagship intro CS classes.</p>
-                <p>I was born and raised in Bacolod City, Philippines, went to boarding school in the foothills of the Himalayas in India, and now call the perplexing one-way streets of Boston my home.</p>
-                <p>I love meeting new people and learning about their stories.</p>
-            </div>
+        <section id="about" class="content-section">
+            <p>I'm a current senior at Harvard College studying computer science, with a concurrent masters in computational science and engineering.</p>
+            <p>In the past, I have worked for <a href="https://www.coinbase.com/" target="_blank">Coinbase</a>, <a href="https://www.redhat.com/en" target="_blank">Red Hat</a>, <a href="https://www.gcash.com/" target="_blank">GCash</a>, and <a href="https://www.novid.org/" target="_blank">NOVID</a>.</p>
+            <p>I have also been a teaching fellow for CS50 and CS32, Harvard's flagship intro CS classes. As well as CS 109a, intro to data science, and CSCI E-159, intro cybersecurity.</p>
+            <p>I was born and raised in <a href="https://en.wikipedia.org/wiki/Bacolod" target="_blank">Bacolod City</a>went to boarding school in the foothills of the Himalayas in India, and now call the perplexing one-way streets of Boston my home.</p>
+            <p>I love meeting new people and learning about their stories.</p>
         </section>
 
-        <section id="books-section" class="content-section">
-            <div id="books-text" style="display: none;">
-                <p>Here is a list of books, in no particular order, that I have found influential:</p>
-                <p>The Brothers Karamazov, by Fyodor Dostoevsky</p>
-                <p>Crime and Punishment, by Fyodor Dostoevsky</p>
-                <p>Siddhartha, by Herman Hesse</p>
-                <p>Hard Boiled Wonderland and the End of the World, by Haruki Murakami</p>
-                <p>The Stranger, by Albert Camus</p>
-                <p>The Wind-Up Bird Chronicle, by Haruki Murakami</p>
-                <p>When Breath Becomes Air, by Paul Kalinithi</p>
-                <p>Never Let Me Go, by Kazuo Ishiguro</p>
-                <p>One Flew Over the Cuckoo's Nest, by Ken Kesey</p>
-                <p>1984, by George Orwell</p>
-                <p>Man's Search for Meaning, by Viktor Frankl</p>
-                <p>Brave New World, by Aldous Huxley</p>
-                <p>Notes from Underground, by Fyodor Dostoevsky</p>
-                <p>Metamorphosis, by Franz Kafka</p>
-                <p>Kafka on the Shore, by Haruki Murakami</p>
+        <section id="books" class="content-section" style="display: none;">
+            <h2 style="margin-bottom: 1.5rem;">Books That Have Influenced Me</h2>
+            <div class="book-list">
+                <div class="book-item">The Brothers Karamazov, by Fyodor Dostoevsky</div>
+                <div class="book-item">Crime and Punishment, by Fyodor Dostoevsky</div>
+                <div class="book-item">Siddhartha, by Herman Hesse</div>
+                <div class="book-item">Hard Boiled Wonderland and the End of the World, by Haruki Murakami</div>
+                <div class="book-item">The Stranger, by Albert Camus</div>
+                <div class="book-item">The Wind-Up Bird Chronicle, by Haruki Murakami</div>
+                <div class="book-item">When Breath Becomes Air, by Paul Kalinithi</div>
+                <div class="book-item">Never Let Me Go, by Kazuo Ishiguro</div>
+                <div class="book-item">One Flew Over the Cuckoo's Nest, by Ken Kesey</div>
+                <div class="book-item">1984, by George Orwell</div>
+                <div class="book-item">Man's Search for Meaning, by Viktor Frankl</div>
+                <div class="book-item">Brave New World, by Aldous Huxley</div>
+                <div class="book-item">Notes from Underground, by Fyodor Dostoevsky</div>
+                <div class="book-item">Metamorphosis, by Franz Kafka</div>
+                <div class="book-item">Kafka on the Shore, by Haruki Murakami</div>
             </div>
         </section>
-        
-    </main>
+    </div>
+
+    <button id="theme-toggle" aria-label="Toggle dark mode">
+        <i class="fas fa-moon"></i>
+    </button>
 
     <footer>
         <p>Made with ❤️ from Bacolod City</p>
     </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const themeToggle = document.getElementById('theme-toggle');
+            const themeIcon = themeToggle.querySelector('i');
+            const sections = document.querySelectorAll('.content-section');
+            const navLinks = document.querySelectorAll('.nav-link');
+
+            // Theme handling
+            const currentTheme = localStorage.getItem('theme') || 'light';
+            if (currentTheme === 'dark') {
+                document.body.classList.add('dark-mode');
+                themeIcon.classList.replace('fa-moon', 'fa-sun');
+            }
+
+            themeToggle.addEventListener('click', () => {
+                document.body.classList.toggle('dark-mode');
+                themeIcon.classList.toggle('fa-sun');
+                themeIcon.classList.toggle('fa-moon');
+                localStorage.setItem('theme', document.body.classList.contains('dark-mode') ? 'dark' : 'light');
+            });
+
+            // Navigation handling
+            function showSection(sectionId) {
+                sections.forEach(section => {
+                    if (section.id === sectionId) {
+                        section.style.display = 'block';
+                        setTimeout(() => section.classList.add('active'), 50);
+                    } else {
+                        section.classList.remove('active');
+                        section.style.display = 'none';
+                    }
+                });
+            }
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const sectionId = link.getAttribute('href').substring(1);
+                    showSection(sectionId);
+                });
+            });
+
+            // Show initial section
+            showSection('about');
+        });
+    </script>
 </body>
 </html>
